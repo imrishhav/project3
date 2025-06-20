@@ -1,0 +1,627 @@
+/* Full page black background */
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: black; /* ⬅️ This sets the page background to black */
+  font-family: Arial, sans-serif; /* optional: improves typography */
+  height: 100%;
+}
+
+
+/* Background image container */
+.container1 {
+  position: relative;
+  width: 100%;
+  height: 80vh; /* ⬅️ Only 80% of viewport height */
+  overflow: hidden;
+}
+
+/* Background image */
+.bgimage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* Content overlay */
+.content {
+  position: relative;
+  z-index: 2;
+  padding: 30px 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Netflix Logo */
+.logo {
+  width: 150px;
+}
+
+/* Button container */
+.buttons {
+  display: flex;
+  gap: 15px;
+}
+
+/* Buttons */
+.first {
+  color: white;
+  background-color: rgba(210, 198, 198, 0.3);
+  border: 2px solid white;
+  border-radius: 7px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.second {
+  color: white;
+  background-color: red;
+  border: 2px solid white;
+  border-radius: 7px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Center content over background */
+.center-content {
+  position: absolute;
+  top: 50%; /* still vertical center */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  width: 90%;
+  max-width: 700px;
+  z-index: 2;
+}
+
+/* Input and button container */
+.input-box {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Email input box */
+.email-input {
+  padding: 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 7px;
+  width: 60%;
+  min-width: 250px;
+  outline: none;
+}
+
+/* Reuse existing .second button styles, just make sure it's wide enough */
+.second {
+  color: white;
+  background-color: red;
+  border: 2px solid white;
+  border-radius: 7px;
+  padding: 15px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Trending Section */
+.trending-now {
+  background-color: black;
+  color: white;
+  padding: 50px 30px;
+}
+
+.trending-now h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* Scrollable container */
+.scroll-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Card wrapper */
+.cards-wrapper {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+/* Hide scrollbar */
+.cards-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual Card */
+.card {
+  position: relative;
+  min-width: 160px;
+  height: 240px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.08);
+  z-index: 1;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Rank Number */
+.rank {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  font-size: 80px;
+  font-weight: 900;
+  color: white;
+  -webkit-text-stroke: 2px black;
+  z-index: 2;
+}
+
+/* Scroll arrows */
+.scroll-btn {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px 15px;
+  z-index: 5;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+  position: absolute;
+}
+
+.scroll-btn.left {
+  left: 0;
+}
+
+.scroll-btn.right {
+  right: 0;
+}
+
+.scroll-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Section styling */
+/* Section Styling */
+.reasons-section {
+  background-color: black;
+  padding: 60px 30px;
+  color: white;
+  overflow-x: auto;
+}
+
+.reasons-section h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+/* Outer wrapper for scroll (horizontal scroll on smaller devices) */
+.reasons-cards-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Flex container for cards */
+.reasons-cards {
+  display: flex;
+  gap: 20px;
+  min-width: 1200px; /* Ensures all cards stay in one line */
+}
+
+/* Card styling */
+.reason-card {
+  background: linear-gradient(145deg, #1a1a2e, #1f1f3b);
+  border-radius: 20px;
+  padding: 25px 20px 70px;
+  width: 270px;
+  height: 250px;
+  flex-shrink: 0;
+  position: relative;
+  color: #ddd;
+  transition: transform 0.3s ease;
+}
+
+.reason-card:hover {
+  transform: scale(1.03);
+}
+
+.reason-card h3 {
+  color: white;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.reason-card p {
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* Icon in bottom-right corner */
+.corner-icon {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+}
+
+/* FAQ section */
+.faq-section {
+  background-color: black;
+  color: white;
+  padding: 60px 30px;
+  font-family: Arial, sans-serif;
+  max-width: 900px;
+  margin: auto;
+}
+
+.faq-section h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.faq-item {
+  border-bottom: 3px solid black;
+  background-color: #2c2c2c;
+  transition: background-color 0.3s ease;
+  margin-bottom: 8px;
+}
+
+.faq-item:hover {
+  background-color: #3a3a3a;
+}
+
+.faq-question {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.faq-question .icon {
+  font-size: 26px;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .icon {
+  transform: rotate(45deg); /* Turns + into an x */
+}
+
+.faq-answer {
+  display: none;
+  padding: 0 20px 20px;
+  font-size: 16px;
+  color: #ccc;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+.email-cta {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.email-cta p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.email-input-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.email-field {
+  padding: 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  width: 400px;
+  background-color: #141414;
+  color: white;
+  outline: none;
+  border: 1px solid gray;
+}
+
+.get-started-btn {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  padding: 20px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.get-started-btn span {
+  font-size: 22px;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.get-started-btn:hover {
+  background-color: #e50914;
+}
+
+.footer {
+  background-color: black;
+  color: #999;
+  padding: 40px 60px;
+  font-family: Arial, sans-serif;
+}
+
+.footer a {
+  color: #999;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+.footer a:hover {
+  color: white;
+}
+
+.footer-contact {
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  width: 23%;
+}
+
+.footer-links li {
+  margin-bottom: 15px;
+}
+
+.footer-lang select {
+  background-color: transparent;
+  color: white;
+  padding: 10px 15px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.footer-region {
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+.footer-note {
+  font-size: 13px;
+  color: #777;
+}
+
+.footer-note a {
+  color: #58a6ff;
+}
+
+/* ----------- RESPONSIVE DESIGN START ----------- */
+
+@media screen and (max-width: 1024px) {
+  .content {
+    padding: 20px 30px;
+  }
+
+  .center-content h1 {
+    font-size: 26px;
+  }
+
+  .center-content h3 {
+    font-size: 18px;
+  }
+
+  .reasons-cards {
+    flex-wrap: wrap;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .reason-card {
+    width: 90%;
+    max-width: 400px;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .buttons {
+    align-self: flex-end;
+  }
+
+  .input-box {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .email-input {
+    width: 90%;
+  }
+
+  .email-field {
+    width: 90%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .get-started-btn {
+    border-radius: 5px;
+    width: 90%;
+  }
+
+  .scroll-container {
+    overflow-x: auto;
+  }
+
+  .cards-wrapper {
+    gap: 10px;
+    padding-bottom: 20px;
+  }
+
+  .card {
+    min-width: 130px;
+    height: 190px;
+  }
+
+  .rank {
+    font-size: 60px;
+  }
+
+  .reasons-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .reason-card {
+    width: 95%;
+  }
+
+  .faq-question {
+    font-size: 16px;
+  }
+
+  .faq-answer {
+    font-size: 15px;
+  }
+
+  .email-cta p {
+    font-size: 16px;
+  }
+
+  .footer {
+    padding: 30px 20px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-links ul {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .footer-lang select {
+    width: 100%;
+  }
+
+  .footer-contact,
+  .footer-region,
+  .footer-note {
+    text-align: left;
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .center-content h1 {
+    font-size: 22px;
+  }
+
+  .center-content h3 {
+    font-size: 16px;
+  }
+
+  .second,
+  .first {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  .reason-card h3 {
+    font-size: 16px;
+  }
+
+  .reason-card p {
+    font-size: 14px;
+  }
+
+  .faq-section h2 {
+    font-size: 24px;
+  }
+
+  .email-cta p {
+    font-size: 15px;
+  }
+
+  .get-started-btn {
+    font-size: 16px;
+    padding: 15px;
+  }
+}
+
+
+
+/* ----------- RESPONSIVE DESIGN END ----------- */
+.developer-credit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  opacity: 0.4;
+  font-size: 12px;
+  color: #ccc;
+}
+
+.developer-credit img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+  border: 1px solid #555;
+}
